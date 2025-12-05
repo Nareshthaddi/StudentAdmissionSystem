@@ -1,0 +1,31 @@
+﻿@page
+@model StudentRazor.Pages.GetdataModel
+@{
+}
+<h1>Student Data</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>DateOfBirth</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach(var emp in Model.students)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.FullName</td>
+                <td>@emp.Email</td>
+                <td>@emp.Course</td>
+                <td>@emp.DateOfBirth</td>
+                <td>@emp.Address</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,151 @@
+﻿@page
+@model StudentRazor.Pages.CreateModel
+@{
+}
+
+<style>
+
+    body {
+        background: linear-gradient(135deg, #6dd5ed, #2193b0);
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .marquee {
+        width: 100%;
+        overflow: hidden;
+        display: block;
+        margin-top: 20px;
+    }
+
+    .marquee-inner {
+        display: inline-block;
+        white-space: nowrap;
+        font-size: 32px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        padding-left: 100%;
+        animation: slideLeft 10s linear infinite;
+    }
+    @@keyframes slideLeft {
+        0%{
+            transform: translateX(0);
+        }
+
+    100% {
+        transform: translateX(-100%);
+    }
+
+    }
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .card {
+        width: 450px;
+        padding: 30px;
+        border-radius: 10px;
+        background: #ffffffdd;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        animation: fadeIn 1s ease;
+    }
+
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    }
+
+    .logo {
+        width: 80px;
+        display: block;
+        margin: 0 auto 15px auto;
+        
+    }
+
+    .btn-primary:hover {
+        background-color: #125c80 !important;
+        transition: 0.3s;
+        transform: scale(1.03);
+    }
+
+</style>
+
+<div class="marquee" role="status" aria-live="polite">
+    <span class="marquee-inner">Welcome to the Student Application System — apply now!</span>
+</div>
+
+
+<div class="center-container">
+    <div class="card">
+
+        <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="logo" />
+
+        <form method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StuF.FullName" class="form-label"></label>
+                <input asp-for="StuF.FullName" class="form-control" placeholder="Enter full name" />
+                <span asp-validation-for="StuF.FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StuF.Email" class="form-label"></label>
+                <input asp-for="StuF.Email" class="form-control" placeholder="Enter email" />
+                <span asp-validation-for="StuF.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StuF.Course" class="form-label"></label>
+                <div><input asp-for="StuF.Course" type="checkbox" value="Mtech" /> Mtech</div>
+                <div><input asp-for="StuF.Course" type="checkbox" value="B.Tech" /> B.Tech</div>
+                <div><input asp-for="StuF.Course" type="checkbox" value="MCA" /> MCA</div>
+                <div><input asp-for="StuF.Course" type="checkbox" value="MBA" /> MBA</div>
+                <span asp-validation-for="StuF.Course" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StuF.DateOfBirth" class="form-label"></label>
+                <input asp-for="StuF.DateOfBirth" class="form-control" type="date" />
+                <span asp-validation-for="StuF.DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StuF.Address" class="form-label"></label>
+                <select asp-for="StuF.Address" class="form-control">
+                    <option value="">--- Select ---</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Vizianagaram">Vizianagaram</option>
+                    <option value="Vishakapatnam">Vishakapatnam</option>
+                    <option value="Goa">Goa</option>
+                </select>
+                <span asp-validation-for="StuF.Address" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+            <a class="btn btn-primary" asp-page="/Getdata">GetEmployee Data</a>
+
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
